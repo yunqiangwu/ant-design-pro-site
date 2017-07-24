@@ -1,0 +1,180 @@
+FORMAT: 1A
+HOST: https://api.example.com
+
+# API 示例文档 - Ant Design Pro
+
+这里是 Ant Design Pro 标准项目的 API 文档，可以在此对项目的 HTTP API 进行前后端约定、查阅、备忘、沉淀。
+
+遵循 [apiblueprint 规范](http://apiblueprint.org/)，更多 [apib 文件写法](https://github.com/danielgtaylor/aglio/blob/master/example.apib)。
+
+# Data Structures
+
+## UserData
+
++ id: 1 (required, number) - Unique identifier
++ title: Grocery list (required) - Single line description
++ body: Buy milk - Full description of the user which supports Markdown.
+
+## UserList (array)
++ (UserData)
+
+# Group Users
+用户。
+
+## 获取用户列表 [GET /users]
+获取用户列表。
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Attributes (UserList)
+
+## 创建新用户 [POST /users]
+
+创建新用户。
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "title": "My new user",
+                "body": "This is the body"
+            }
+
++ Response 201
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "error": "Invalid title"
+            }
+
+## 获取用户 [GET /users/{id}]
+
+获取单个用户信息。
+
++ Parameters
+    + id - 用户 ID
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Attributes (UserData)
+
++ Response 404 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Body
+
+            {
+                "error": "User not found"
+            }
+
+
+## 更新用户 [PUT /users/{id}]
+
+更新指定用户。
+
+::: warning
+#### <i class="fa fa-warning"></i> 注意
+一些提示信息。
+:::
+
++ Parameters
+    + id - 用户 ID
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "title": "Grocery List (Safeway)"
+            }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Attributes (UserData)
+
++ Response 404 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Body
+
+            {
+                "error": "User not found"
+            }
+
++ Request delete body (application/json)
+
+    + Body
+
+            {
+                "body": ""
+            }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Attributes (UserData)
+
++ Response 404 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Body
+
+            {
+                "error": "User not found"
+            }
+
+## 删除用户 [DELETE /users/{id}]
+删除指定用户。
+
++ Parameters
+    + id - 用户 ID
+
++ Response 204
+
++ Response 404 (application/json)
+
+    + Headers
+
+            X-Request-ID: f72fc914
+            X-Response-Time: 4ms
+
+    + Body
+
+            {
+                "error": "User not found"
+            }

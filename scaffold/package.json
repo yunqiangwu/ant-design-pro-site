@@ -5,7 +5,9 @@
     "start": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "api:server": "aglio -i api/main.apib --theme-template triple --server",
+    "api:build": "aglio -i api/main.apib --theme-template triple -o dist/api.html"
   },
   "dependencies": {
     "antd": "^2.12.1",
@@ -19,6 +21,7 @@
     "react-router": "2.x || 3.x"
   },
   "devDependencies": {
+    "aglio": "^2.3.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-dva-hmr": "^0.3.2",
     "babel-plugin-transform-runtime": "^6.9.0",
