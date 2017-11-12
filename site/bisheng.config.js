@@ -1,5 +1,6 @@
 
 const path = require('path');
+const fs = require('fs');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -42,12 +43,17 @@ module.exports = {
     if (filePath.endsWith('/index.html')) {
       return [filePath, filePath.replace(/\/index\.html$/, '-cn/index.html')];
     }
-    if (filePath !== '/404.html' && filePath !== '/index-cn.html') {
-      return [filePath, filePath.replace(/\.html$/, '-cn.html')];
-    }
     if (filePath.indexOf(':children')>=0) {
       let filedir = filePath.replace(/:children.*$/, '');
-      return fs.readdirSync(filedir).map(item=> filePath.replace(/:children/, item));
+      let cwd = process.cwd().replace(/\$/,'') + '/';
+
+      if(filePath.indexOf('components')>=0){
+         cwd = process.cwd().replace(/\$/,'') + '/scaffold/src/components';
+      }
+      return fs.readdirSync(path.resolve(patfiledir,filedir.replace(/^[\\\/]/,''))).map(item=> filePath.replace(/:children/, item));
+    }
+    if (filePath !== '/404.html' && filePath !== '/index-cn.html') {
+      return [filePath, filePath.replace(/\.html$/, '-cn.html')];
     }
     return filePath;
   },

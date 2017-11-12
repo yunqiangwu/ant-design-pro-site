@@ -26,8 +26,8 @@ if [ ! -d "${binfileDir}" ]; then
 
 	  mkdir -p ${binfileDir}
 	  curl -o ${binfileDir}/qshell${qshellfile_ext} https://dn-devtools.qbox.me/2.1.5/${qshellfile}
-      chmod +x ${binfileDir}qshell${qshellfile_ext}
-      echo "File: ${qshellfile}"
+    chmod +x ${binfileDir}qshell${qshellfile_ext}
+    echo "File: ${qshellfile}"
 
 
 fi
