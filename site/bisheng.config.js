@@ -45,6 +45,10 @@ module.exports = {
     if (filePath !== '/404.html' && filePath !== '/index-cn.html') {
       return [filePath, filePath.replace(/\.html$/, '-cn.html')];
     }
+    if (filePath.indexOf(':children')>=0) {
+      let filedir = filePath.replace(/:children.*$/, '');
+      return fs.readdirSync(filedir).map(item=> filePath.replace(/:children/, item));
+    }
     return filePath;
   },
   doraConfig: {},
