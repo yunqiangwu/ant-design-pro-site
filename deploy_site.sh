@@ -1,6 +1,5 @@
 
 
-
 dist_dir=_site
 bucket=antd-pro-site
 export qnak=aroRRNOX0hnzrAxDv4G1I76a1Ygr18zGsg0D7kJn
@@ -12,7 +11,6 @@ cd deploy
 
 binfileDir='.bin'
 buildPlatform=`uname | tr '[A-Z]' '[a-z]'`
-buildPlatform=msys_nt
 qshellfile_ext=
 
 case $buildPlatform in  
@@ -28,7 +26,7 @@ if [ ! -d "${binfileDir}" ]; then
 
 	  mkdir -p ${binfileDir}
 	  curl -o ${binfileDir}/qshell${qshellfile_ext} https://dn-devtools.qbox.me/2.1.5/${qshellfile}
-      sh "chmod +x ${binfileDir}/${qshellfile}"
+      chmod +x ${binfileDir}qshell${qshellfile_ext}
       echo "File: ${qshellfile}"
 
 
