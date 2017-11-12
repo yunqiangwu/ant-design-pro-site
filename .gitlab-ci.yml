@@ -32,7 +32,7 @@ install:
 
 test:
   script:
-    - npm -g i jest
+    - npm i
     - npm run test
   stage: test
   only:
@@ -43,7 +43,6 @@ test:
 deploy:
   script:
     - npm i
-    - npm -g i roadhog-api-doc gh-pages roadhog
     - npm run site
   stage: deploy
   only:
