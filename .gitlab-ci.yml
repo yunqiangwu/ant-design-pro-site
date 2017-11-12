@@ -27,7 +27,7 @@ install:
     - npm install
   stage: install
   only:
-    - TabsRouter
+    - master
 
 
 test:
@@ -36,7 +36,7 @@ test:
     - npm run test
   stage: test
   only:
-    - TabsRouter
+    - master
 
   
 
@@ -46,7 +46,7 @@ deploy:
     - npm run site
   stage: deploy
   only:
-    - TabsRouter
+    - master
    
 
 # test_db:
